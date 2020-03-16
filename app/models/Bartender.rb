@@ -10,4 +10,19 @@ class Bartender
         @@all_bartenders << self
     end
 
+    def drinks
+        Drink.all.select do |d|
+            d.bartender == self
+        end
+    end
+
+    def customers
+        self.drinks.map do |d|
+            d.customer
+        end.uniq
+    end 
+
+    def num_drinks
+        self.drinks.count
+    end
 end

@@ -21,25 +21,13 @@ class Drink
         arr = self.all.map do |d| 
             d.name
         end 
-        most_popular = nil   
-        most_drink_count = 0  
-        arr.uniq.each do |d1|
-            count = 0 
-            arr.each do |d2|
-                if d2 == d1 
-                    count += 1 
-                end 
-            end 
-            if count > most_drink_count
-                most_drink_count = count
-                most_popular = d1 
-            end 
-        end
-        most_popular
+        arr.max_by { |d| d.count(d)}
     end
-# def max_count(arr)
-#   arr.uniq.map { |n| arr.count(n) }.max
-# end
+
+    def self.most_expensive
+        binding.pry
+        self.all.max_by {|d| d.price}.name
+    end 
 
 end
 

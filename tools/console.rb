@@ -48,9 +48,12 @@ p michael.check == 24
 
 p "-----Drink Methods !!!------"
 p Drink.most_popular == "Old Fashioned"
+p Drink.most_expensive == "Old Fashioned"
 
 p "-----Bartender Methods!! ----"
 p chine.customers == [lindsay, michael]
+p chine.num_drinks == 3
+
 
 
 # Some questions that we might want to answer about the relationship. 
