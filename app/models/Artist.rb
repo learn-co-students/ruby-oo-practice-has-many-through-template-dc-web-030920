@@ -49,5 +49,9 @@ class Artist
             hash.max_by{|key, value| value}[0]
         end
     end
+    # def self.artist_w_longest_name
+    #     self.all.select {|artist| artist.name}
+        
+    # end
 
 end

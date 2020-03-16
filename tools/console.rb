@@ -6,6 +6,7 @@ end
 
 a1 = Artist.new("Adele")
 a2 = Artist.new("Drake")
+a3 = Artist.new("Beyonce")
 
 g1 = Genre.new("Pop")
 g2 = Genre.new("Hip-Hop")

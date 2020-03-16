@@ -21,8 +21,13 @@ class Genre
         self.songs.map {|song| song.artist}.uniq
     end
 
-    def song #all songs that belong to the genre
+    def songs #all songs that belong to the genre
         Song.all.select {|song| song.genre == self}
+    end
+
+    def all_songs_by(genre)
+        # self.songs will return all songs instances by genre
+        self.songs.select {|song| song.genre.name == genre}
     end
 
 end
