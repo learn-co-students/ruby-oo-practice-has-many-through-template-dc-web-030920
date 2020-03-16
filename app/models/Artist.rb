@@ -22,6 +22,24 @@ class Artist
         song
     end
 
+    def genres
+        self.songs.map do |song|
+            song.genre
+        end.uniq
+    end
+        
+        #Returns the most played song by artist
+    def self.song_with_over_1000_hits
+        most_popular = 0
+        Song.all.find_all do |song|
+            if song.num_of_plays > 1000
+                song.artist
+            end
+        end
+    end
+
+
+
     
 
 end
