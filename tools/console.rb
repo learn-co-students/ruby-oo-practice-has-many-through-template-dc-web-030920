@@ -29,6 +29,9 @@ drink1 = Drink.new("Martini", 12, michael, ann)
 drink2 = Drink.new("Old Fashioned", 13, lindsay, chine)
 drink3 = Drink.new("Old Fashioned", 13, mary, ann)
 drink4 = Drink.new("Manhattan", 11, lindsay, chine)
+drink5 = Drink.new("Mojito", 12, mary, ann)
+drink6 = Drink.new("Manhattan", 11, mary, ann)
+drink7 = Drink.new("Old Fashioned", 12, mary, chine)
 
 
 p "----Initialize Tests! -------"
@@ -47,12 +50,15 @@ p lindsay.drinks == [drink2, drink4]
 p michael.check == 24
 
 p "-----Drink Methods !!!------"
+Drink.drink_count("Old Fashioned")
 p Drink.most_popular == "Old Fashioned"
 p Drink.most_expensive == "Old Fashioned"
+p Drink.least_popular == "Martini"
+p Drink.least_expensive == "Manhattan"
 
 p "-----Bartender Methods!! ----"
-p chine.customers == [lindsay, michael]
-p chine.num_drinks == 3
+p chine.customers == [lindsay, mary, michael]
+p chine.num_drinks == 4
 
 
 
