@@ -1,11 +1,11 @@
 class Genre
 
-    attr_reader :genre_name
+    attr_reader :name
     
     @@all = []
 
-    def initialize(genre_name)
-        @genre_name = genre_name
+    def initialize(name)
+        @name = name
         @@all << self
     end
 
