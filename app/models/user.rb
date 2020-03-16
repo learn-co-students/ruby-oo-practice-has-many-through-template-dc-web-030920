@@ -27,24 +27,31 @@ class User
         x.user == self}
         .map{|m| m.movie.genre}
         .inject(Hash.new(0)){|total, genre| total[genre] += 1 ;total}
-        binding.pry
         # .max_by{|k,v| v}
         # arr hash becomes an array. check if even numbers are tied. if yes then return both indexes
-        # arr.to_a
-        # i = 0
-        # highest_c = 0
-        # favorite = []
-        # highest = nil
-        #     while i < arr.count
-        #         # if arr[i][1] >= highest_c
-        #         #    highest = arr[i]
-                        favorite << arr[i]
-        #         #    highest_c = arr[i][1]
-        #         if arr[i][1] == arr[i-1][1]
-
-        #         end
-        #     end
-        # highest_c
+        #everything after this point is for a tie breaker
+        new_arr = arr.to_a
+        i = 0
+        highest_c = 0
+        favorite = []
+        highest = nil
+            while i < new_arr.count
+                if new_arr[i][1] > highest_c
+                    highest = new_arr[i]
+                    favorite.clear
+                    favorite << new_arr[i]
+                    highest_c = new_arr[i][1]
+                end
+                
+                
+                if new_arr[i][1] == new_arr[i-1][1] 
+                    favorite << new_arr[i]
+                    
+                end
+                i +=1
+            end
+            favorite.map {|x| x[0]}.uniq
+            # binding.pry
     
     end
 end
@@ -58,7 +65,7 @@ end
 
 # user1 = User.new("Bill", 75)
 
-# user favorite genre
+# user favorite genre DONE
 # user movie List done
 # user number of watched
 # user number of unwatched
