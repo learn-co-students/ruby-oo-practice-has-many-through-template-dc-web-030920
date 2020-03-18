@@ -15,10 +15,23 @@ class Bookmark
         @@all
     end
     
+    def self.unwatched
+        self.all.select {|bookmark| bookmark.status == "unwatched"}.count
+    end
+
+    def self.watched
+        self.all.select {|bookmark| bookmark.status == "watched"}.count
+    end
+
+    def self.most_popular_movie
+        self.all.map {|bookmark| bookmark.movie}.group_by(&:itself)
+        .each_with_object({}) { |(key,value), hash| hash[key] = value.size}
+        .max_by {|movie, count| count}[0]
+        # binding.pry
+    end
 end
 
-#num unwatched movies
-#num watched movies
+
 
 #<Bookmark:0x00007fa984a28e58
 #@date="5/12/2010",

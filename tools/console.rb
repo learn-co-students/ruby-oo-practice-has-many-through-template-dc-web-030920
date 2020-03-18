@@ -9,7 +9,7 @@ user2 = User.new("Johnny Bravo", 27)
 user3 = User.new("Another user", 48)
 user4 = User.new("Old person", 800)
 user5 = User.new("Darth Vader", 50)
-user6 = User.new("Toddler", 0)
+user6 = User.new("Toddler", 1)
 
 movie1 = Movie.new("Star Wars", "Sci-Fi")
 movie2 = Movie.new("John Wick", "Action")

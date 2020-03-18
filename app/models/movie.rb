@@ -20,42 +20,26 @@ class Movie
     end
 
     def self.most_genre
-        # binding.pry
-        # Bookmark.all.select {|bookmark| }
-        # Bookmark.all.max_by {|x| x.movie == self
-
-        # }
-        Bookmark.all.select { |x| x.movie.genre}
-        .map {|x| x.movie.genre}
+        Bookmark.all.select { |bookmark| bookmark.movie.genre}
+        .map {|bookmark| bookmark.movie.genre}
         .group_by(&:itself)
         .each_with_object({}) { |(k,v), hash| hash[k] = v.size}
         .max_by {|key, value| value }[0]
-
-        
     end
 
-    def bookmarked
-        Bookmark.all.select { |x| x.movie == self}.count
+    def bookmarked_count
+        Bookmark.all.select { |bookmark| bookmark.movie == self}.count
     end
 
+    def avg_age
+        ages = Bookmark.all.map {|bookmark| bookmark.user.age if bookmark.movie == self}
+        .compact
+        avg = ages.reduce(:+) / ages.count
+        "The average age of viewers for #{self.name} is #{avg}."
+    end
+
+    def self.alphabetically
+        self.all.sort {|a, b| a.name <=> b.name} #returning Movie class for some reason
+        .select {|movie| movie if movie.class == Movie} #get rid Movie class and nil
+    end
 end
-
-
-
-
-#<Bookmark:0x00007fa984a28e58
-#@date="5/12/2010",
-#@movie=#<Movie:0x00007fa984a29510 @genre="Sci-Fi", @name="Star Wars">,
-#@status="watched",
-#@user=#<User:0x00007fa984a29740 @age=75, @name="Bill">>
-
-
-#all movies
-#most common genre - DONE
-#sorted alphabetically and/or most alphabetical name
-
-
-
-
-#instance methods
-# how many people bookmarked this movie
